@@ -16,7 +16,7 @@ jobs:
       - name: Set up FTP deployment
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}  # Az FTP szerver címe
+          server: ${{ secrets.FTP_HOST }}  # Az FTP szerver címe
           username: ${{ secrets.FTP_USERNAME }}  # Az FTP felhasználónév
           password: ${{ secrets.FTP_PASSWORD }}  # Az FTP jelszó
           local-dir: ./  # A helyi mappa, amit fel szeretnél tölteni
