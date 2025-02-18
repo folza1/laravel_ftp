@@ -1,0 +1,23 @@
+name: FTP Deploy
+
+on:
+  push:
+    branches:
+      - main  # Az a branch, amelyről deploy-olni szeretnél
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up FTP deployment
+        uses: SamKirkland/FTP-Deploy-Action@v5
+        with:
+          server: ${{ secrets.FTP_SERVER }}  # Az FTP szerver címe
+          username: ${{ secrets.FTP_USERNAME }}  # Az FTP felhasználónév
+          password: ${{ secrets.FTP_PASSWORD }}  # Az FTP jelszó
+          local-dir: ./  # A helyi mappa, amit fel szeretnél tölteni
+          server-dir: /laravel/  # A szerver mappa, ahová tölteni szeretnéd
